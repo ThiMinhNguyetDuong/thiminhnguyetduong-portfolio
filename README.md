@@ -1,29 +1,54 @@
 # Thi Minh Nguyet Duong – Portfolio
 
-Welcome to my personal portfolio! 🎉  
-This site showcases my projects, skills, and journey as a Computer Science student passionate about full-stack development and data-driven solutions.
+Personal portfolio site showcasing my work as a frontend developer and final-year Applied Computer Science student at UCLL.
 
-## What you'll find here
+Live site: [thiminhnguyetduong-portfolio.vercel.app](https://thiminhnguyetduong-portfolio.vercel.app)
 
-- **A collection of my featured projects:**
-  - Course Management System – a full-stack learning platform
-  - Vinylify – digital vinyl collection with RFID scanning
-  - Real Estate Analytics – data pipeline with Airflow & Azure
-  - Chatbot Integration – built for CCV Belgium
-  - ApplyWise – job application tracking system
-- **An interactive homepage** with an About Me section and links to my resume, LinkedIn, and GitHub
+## What's here
 
-## Tech Stack
+- **About** — background, skills, and what I'm looking for next
+- **Work experience** — frontend roles at Novable (internship and contract)
+- **Projects** — case studies with showcases, tech stacks, and live demos where available
+- **Participations** — hackathons and community leadership
 
-This portfolio is built with:
-- **Frontend:** Next.js, React, TypeScript, Tailwind CSS
-- **Deployment:** Vercel
+### Featured projects
+
+- **Unsent Stories** — live digital chat-based theatre platform for UCLL
+- **Artfolio** — cloud-native art marketplace on Azure
+- **Distributed Social Network** — microservices platform with event-driven architecture
+- **Vinylify** — digital vinyl collection with RFID scanning
+- **Real Estate Analytics** — data pipeline with Airflow and Azure
+- **CCV Chatbot** — chatbot widget integration for CCV Belgium
+- **Hanoi Travel Blog** — travel blog showcasing Vietnamese culture
+- **Retired Spaceship** — Space Invaders–inspired game built with Python and Pygame
+
+## Tech stack
+
+- **Framework:** Next.js 14, React, TypeScript
+- **Styling:** Tailwind CSS 4
+
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+To add a project, create a new `.mdx` file in `app/projects/posts/` with YAML frontmatter:
+
+```mdx
+---
+title: 'Project Title'
+publishedAt: '2026-05-01'
+summary: 'Short description for project cards and SEO.'
+---
+
+Your project content here...
+```
 
 ## Contact
 
-If you'd like to connect or collaborate:
 - **Email:** nguyet.tm.duong@gmail.com
 - **LinkedIn:** [linkedin.com/in/tmnduong](https://linkedin.com/in/tmnduong)
-- **Portfolio Website:** [Your Portfolio URL]
-
-✨ Feel free to explore, fork, or star this repo. Thanks for stopping by!
