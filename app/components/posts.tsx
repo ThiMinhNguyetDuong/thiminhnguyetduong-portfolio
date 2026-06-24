@@ -25,7 +25,7 @@ export function ProjectPostsSimple() {
               <p className="text-neutral-600 dark:text-neutral-400 w-[140px] md:w-[160px] tabular-nums flex-shrink-0">
                 {formatDate(post.metadata.publishedAt, false)}
               </p>
-              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
+              <p className="project-name text-neutral-900 dark:text-neutral-100">
                 {post.metadata.title}
               </p>
             </div>
@@ -87,7 +87,7 @@ export function ProjectPosts() {
                       {formatDate(post.metadata.publishedAt, false)}
                     </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 mb-2">
+                  <h3 className="project-name text-xl font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 mb-2">
                     {post.metadata.title}
                   </h3>
                   <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">

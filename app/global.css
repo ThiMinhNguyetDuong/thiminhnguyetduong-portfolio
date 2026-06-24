@@ -156,6 +156,21 @@ table {
 
 .title {
   text-wrap: balance;
+  cursor: default;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.06em;
+}
+
+.project-name {
+  letter-spacing: 0.06em;
+}
+
+.title-char {
+  display: inline-block;
+  transform-origin: bottom center;
+  transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
 }
 
 /* Vertical text for About label */
