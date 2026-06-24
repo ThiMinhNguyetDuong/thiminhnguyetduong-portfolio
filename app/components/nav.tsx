@@ -18,10 +18,10 @@ export function Navbar() {
       <div className="flex justify-between items-center">
         {/* Logo/Name */}
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-black rounded flex items-center justify-center">
-            <span className="text-white font-bold text-sm">T</span>
+          <div className="w-8 h-8 bg-black dark:bg-white rounded flex items-center justify-center">
+            <span className="text-white dark:text-black font-bold text-sm">T</span>
           </div>
-          <span className="font-medium text-lg">Thi Minh Nguyet Duong</span>
+          <span className="font-medium text-lg text-neutral-900 dark:text-neutral-100">Thi Minh Nguyet Duong</span>
         </div>
 
         {/* Navigation */}
@@ -31,7 +31,7 @@ export function Navbar() {
               <Link
                 key={path}
                 href={path}
-                className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors"
               >
                 {name}
               </Link>

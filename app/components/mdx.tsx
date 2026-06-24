@@ -5,6 +5,10 @@ import { highlight } from 'sugar-high'
 import React from 'react'
 
 function Table({ data }) {
+  if (!data || !Array.isArray(data.headers) || !Array.isArray(data.rows)) {
+    return null
+  }
+
   let headers = data.headers.map((header, index) => (
     <th key={index}>{header}</th>
   ))
@@ -100,8 +104,10 @@ let components = {
 }
 
 export function CustomMDX(props) {
+  const Remote = MDXRemote as unknown as (props: any) => JSX.Element
+
   return (
-    <MDXRemote
+    <Remote
       {...props}
       components={{ ...components, ...(props.components || {}) }}
     />

@@ -48,11 +48,19 @@ html {
 }
 
 .prose a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+  @apply text-neutral-900 dark:text-neutral-100 underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+}
+
+.prose a.prose-btn {
+  @apply no-underline decoration-transparent text-white dark:text-neutral-900;
+}
+
+.prose a.prose-btn:hover {
+  @apply text-white dark:text-neutral-900;
 }
 
 .prose .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
+  @apply text-neutral-300 dark:text-neutral-500;
   content: '#';
 }
 
@@ -65,11 +73,11 @@ html {
 }
 
 .prose code {
-  @apply px-1 py-0.5 rounded-lg;
+  @apply px-1 py-0.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100;
 }
 
 .prose pre code {
-  @apply p-0;
+  @apply p-0 bg-transparent text-inherit;
   border: initial;
   line-height: 1.5;
 }
@@ -88,31 +96,31 @@ html {
 }
 
 .prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-4xl font-medium tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-100;
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-xl font-medium tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-100;
 }
 
 .prose h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-xl font-medium tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-100;
 }
 
 .prose h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-2;
+  @apply text-lg font-medium tracking-tight mt-6 mb-2 text-neutral-900 dark:text-neutral-100;
 }
 
 .prose strong {
-  @apply font-medium;
+  @apply font-medium text-neutral-900 dark:text-neutral-100;
 }
 
 .prose ul {
-  @apply list-disc pl-6;
+  @apply list-disc pl-6 text-neutral-800 dark:text-neutral-200;
 }
 
 .prose ol {
-  @apply list-decimal pl-6;
+  @apply list-decimal pl-6 text-neutral-800 dark:text-neutral-200;
 }
 
 .prose > :first-child {
@@ -143,6 +151,7 @@ table {
   max-width: fit-content;
   overflow-x: auto;
   white-space: nowrap;
+  @apply text-neutral-800 dark:text-neutral-200;
 }
 
 .title {

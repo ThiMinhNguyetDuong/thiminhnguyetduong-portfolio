@@ -1,0 +1,71 @@
+---
+title: 'Distributed Social Network Platform'
+publishedAt: '2025-12-01'
+summary: 'A cloud-native social platform built with a microservices architecture, applying distributed systems patterns including the Saga pattern, CQRS, and asynchronous event-driven messaging.'
+---
+
+A cloud-native social platform built with a microservices architecture, applying distributed systems patterns including the Saga pattern, CQRS, and asynchronous event-driven messaging.
+
+## Project Overview
+
+**Duration:** December 2025
+
+This project was built as part of a distributed systems course at UCLL, with a focus on applying patterns correctly and realistically — not just making features work. The platform supports user management, post creation, social feeds, and email notifications across five independent microservices, each owning its own database.
+
+## Architecture
+
+The system is composed of five microservices communicating through a combination of synchronous REST and asynchronous RabbitMQ messaging:
+
+- **User Service** – manages users and friendships
+- **Post Service** – manages posts, likes, comments, and orchestrates the Create Post Saga
+- **Feed Service** – implements a CQRS read model optimised for fast feed queries
+- **Notification Service** – sends email notifications in response to domain events
+- **API Gateway** – single entry point for all clients, handling routing and cross-cutting concerns
+
+Each service enforces data ownership and loose coupling, reflecting core microservices principles: autonomy, scalability, and resilience.
+
+## Key Patterns
+
+### Saga Pattern – Distributed Consistency
+
+Creating a post spans multiple services, making a single database transaction impossible. I implemented an **orchestration saga** coordinated by the Post Service, in two phases:
+
+**Phase 1 — Synchronous & Transactional**
+- Validates all involved users via the User Service before any write occurs
+- Creates the post and tags within a single `@Transactional` method, guaranteeing local atomicity
+- If validation fails, the saga aborts before touching the database — no compensation needed
+
+**Phase 2 — Asynchronous Fan-Out**
+- After the transaction commits, a domain event is published using `@TransactionalEventListener(AFTER_COMMIT)`, ensuring events are never sent for data that didn't persist
+- The Feed Service and Notification Service consume the event independently, improving resilience and decoupling
+
+Failure handling follows deliberate trade-offs aligned with microservice best practices: database failures roll back automatically, and event publishing failures allow eventual consistency — an acceptable trade-off at this layer.
+
+### CQRS – Read/Write Separation
+
+To handle feed queries efficiently, the write and read sides are separated:
+
+- **Write side (Post Service):** normalised schema, handles commands, publishes domain events
+- **Read side (Feed Service):** denormalised `feed_entries` table optimised for reads — no joins, no cross-service calls
+
+This makes feed queries fast and scalable without coupling read performance to the write model.
+
+### Asynchronous Messaging with RabbitMQ
+
+All cross-service updates flow through a RabbitMQ topic exchange with routing keys (`post.created`, `post.liked`, etc.). Each service has its own queues, ensuring proper fan-out semantics — every consumer gets its own copy of events independently.
+
+## Testing Strategy
+
+Testing a distributed system requires a different approach than a monolith. I followed the distributed test pyramid:
+
+- **Unit tests** — business logic and saga orchestration, with external dependencies mocked
+- **Integration tests** — real PostgreSQL via Testcontainers, validating persistence and transactions
+- **Contract tests** — consumer-driven contract testing to verify REST contracts between services and prevent accidental breaking changes
+
+End-to-end tests were intentionally limited due to their brittleness and maintenance cost in distributed environments.
+
+## Tech Stack
+- **Backend:** Java, Spring Boot, Spring Security, Spring Cloud Gateway, RabbitMQ
+- **Databases:** PostgreSQL (per service)
+- **Infrastructure:** Docker, OpenAPI
+- **Testing:** JUnit, Testcontainers, Spring Contract
