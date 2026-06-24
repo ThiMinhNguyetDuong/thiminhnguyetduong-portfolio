@@ -1,0 +1,99 @@
+---
+title: 'Artfolio – Cloud-Native Art Marketplace'
+publishedAt: '2026-03-01'
+summary: 'A full-stack cloud-native marketplace where artists showcase and sell artworks, create exhibitions, and track sales — built on Azure with a serverless backend, managed NoSQL database, and automated CI/CD deployment.'
+---
+
+A full-stack cloud-native marketplace where artists showcase and sell artworks, create exhibitions, and track sales — built on Azure with a serverless backend, managed NoSQL database, and automated CI/CD deployment.
+
+## Project Overview
+
+**Duration:** March 2026 – May 2026  
+**Team:** Group project (3 members) — Cloud Native Engineering, UCLL
+
+Independent artists typically manage their online presence across multiple disconnected platforms — one for showcasing work, another for communication, another for selling. Artfolio brings these into a single centralized, cloud-hosted environment targeted at artists, collectors, and art enthusiasts.
+
+The platform supports two distinct roles with separate capabilities and workflows.
+
+## Project Showcase
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+  <img 
+    src="/images/projects/artfolio/pic1.png" 
+    alt="Artfolio art marketplace gallery and browsing interface"
+    className="w-full rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+  />
+  <img 
+    src="/images/projects/artfolio/pic2.png" 
+    alt="Artfolio artist dashboard, exhibitions, and sales tracking"
+    className="w-full rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+  />
+</div>
+
+## Features
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+  <div>
+    <h3>Artist Side</h3>
+    <ul>
+      <li>Upload and manage artworks with metadata (title, description, category, tags, price)</li>
+      <li>Create and curate exhibitions with location and scheduling</li>
+      <li>Track sold artworks, total volume, and income via a sales dashboard</li>
+      <li>Receive real-time notifications for likes, comments, and purchases</li>
+    </ul>
+  </div>
+  <div>
+    <h3>User Side</h3>
+    <ul>
+      <li>Browse and search the gallery with filtering options</li>
+      <li>Like, comment on, and message artists directly</li>
+      <li>Add artworks to cart and complete checkout</li>
+      <li>View purchase history and manage profile</li>
+    </ul>
+  </div>
+</div>
+
+## Cloud Architecture
+
+The application is fully deployed on Azure, designed around serverless execution and managed infrastructure:
+
+- **Frontend** — containerised Next.js 15 app hosted on Azure Web App, communicating with the backend via REST API secured with JWT bearer tokens
+- **Backend** — Java 17 + Spring Boot 3 running on Azure Function App via Spring Cloud Function adapter, exposing business logic through HTTP-triggered functions
+- **Database** — Azure Cosmos DB with MongoDB API, storing 9 collections: users, artworks, comments, carts, conversations, notifications, exhibitions, sales, and messages
+- **CI/CD** — GitHub Actions pipeline: code push → build Docker image → push to Azure Container Registry → deploy frontend to Azure Web App → deploy backend functions to Azure Function App
+- **Monitoring** — Application Insights for logging and backend performance tracking
+
+One key architectural decision was adopting Cosmos DB's MongoDB API, which preserved the existing Spring Data MongoDB repository structure while migrating to a fully managed cloud database with minimal backend changes.
+
+## Checkout Flow
+
+The checkout flow illustrates how the serverless backend coordinates multiple operations across Cosmos DB collections in a single request:
+
+1. Cart state is updated → `carts` collection
+2. Artwork is marked as SOLD → `artworks` collection
+3. Sale record is created → `artwork_sales` collection
+4. Artist notification is generated → `notifications` collection
+
+This demonstrates how business logic, persistence, and notification handling are orchestrated within a stateless, serverless architecture.
+
+## Cloud Pricing Analysis
+
+As part of the project, we modelled estimated annual Azure costs across three usage scenarios.
+
+The serverless model keeps costs low at small scale since compute is usage-based. Cosmos DB becomes the primary cost driver at higher traffic, while managed infrastructure eliminates the need for server maintenance overhead.
+
+## Development Challenges
+
+**Serverless compatibility** — migrating a Spring Boot backend to Azure Functions required adapting the application through Spring Cloud Function, while preserving REST API behaviour and JWT auth at the function layer.
+
+**Azure CI/CD authorization** — resolved by switching to OIDC authentication with GitHub Actions, eliminating the need for long-lived credentials.
+
+**Deployment drift** — Azure occasionally served stale deployments due to workflow and caching mismatches, requiring explicit cache-busting and deployment configuration adjustments.
+
+**Cloud provider registration** — several Azure services required manual resource provider registration before deployment could proceed.
+
+## Tech Stack
+- **Frontend:** Next.js 15, React, TypeScript, Tailwind CSS
+- **Backend:** Java 17, Spring Boot 3, Spring Security, JWT, Spring Cloud Function
+- **Cloud:** Azure Functions, Azure Web App, Azure Cosmos DB (MongoDB API), Azure Container Registry, Azure Storage Account, Application Insights
+- **DevOps:** Docker, GitHub Actions, CI/CD
