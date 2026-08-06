@@ -22,19 +22,19 @@ export default function Page() {
 
             <div className="space-y-6 text-neutral-600 dark:text-neutral-300 leading-relaxed max-w-4xl">
               <p className="text-lg">
-                Hi, I'm Thi — a final-year Computer Science student and frontend developer based in Brussels. I specialise in building production-ready web applications with React, Next.js, and TypeScript, with a growing focus on cloud-native architecture and data-driven UI.
+                Hi, I’m Thi — a Computer Science graduate and Software Developer based in Brussels. I specialise in building production-ready web applications with React, Next.js, and TypeScript, while expanding my expertise across full-stack development, cloud-native architecture, and data-driven user experiences.
               </p>
 
               <p className="text-lg">
-                Over the past year I've been working at Novable, an AI-powered B2B SaaS platform, where I've shipped features used by real clients — from UI redesigns that reduced workflow friction to analytics integration that informed product decisions. Alongside that, I've led QA on a live client platform and deployed full-stack applications on Azure independently.
+                Over the past year, I’ve been working at Novable, an AI-powered B2B SaaS platform, where I’ve shipped production features used by real clients — from redesigning complex workflows and improving data visualisation to contributing across both frontend and backend applications. Along the way, I’ve collaborated closely with the CTO on product development, analytics integration, and iterative feature delivery.
               </p>
 
               <p className="text-lg">
-                I care about writing clean, maintainable code and designing interfaces that genuinely serve the people using them — not just the ones that look good in a mockup.
+                I care about writing clean, maintainable code and designing software that genuinely solves users’ problems — not just interfaces that look good in a mockup.
               </p>
 
               <p className="text-lg">
-                I'm currently completing my degree and open to new opportunities starting later in 2026.
+                I’m always interested in opportunities where I can build impactful products, continue learning, and grow alongside a collaborative engineering team.
               </p>
             </div>
           </div>
