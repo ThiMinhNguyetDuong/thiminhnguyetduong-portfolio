@@ -25,7 +25,7 @@ export function ProjectPostsSimple() {
               <p className="text-neutral-600 dark:text-neutral-400 w-[140px] md:w-[160px] tabular-nums flex-shrink-0">
                 {formatDate(post.metadata.publishedAt, false)}
               </p>
-              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
+              <p className="project-name text-neutral-900 dark:text-neutral-100">
                 {post.metadata.title}
               </p>
             </div>
@@ -38,25 +38,8 @@ export function ProjectPostsSimple() {
 export function ProjectPosts() {
   let allProjects = getBlogPosts()
 
-  // Define project categories and their colors
-  const getProjectCategory = (title: string) => {
-    if (title.includes('Game') || title.includes('Spaceship') || title.includes('Animal')) {
-      return { name: 'Game Development', color: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300' }
-    }
-    if (title.includes('Management') || title.includes('Chatbot')) {
-      return { name: 'Full-Stack', color: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300' }
-    }
-    if (title.includes('Analytics')) {
-      return { name: 'Data Engineering', color: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300' }
-    }
-    if (title.includes('Vinylify')) {
-      return { name: 'Full-Stack', color: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300' }
-    }
-    if (title.includes('Travel Blog')) {
-      return { name: 'Frontend', color: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300' }
-    }
-    return { name: 'Other', color: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300' }
-  }
+  const tagStyle =
+    'bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300'
 
   return (
     <div className="space-y-6">
@@ -69,8 +52,7 @@ export function ProjectPosts() {
           }
           return 1
         })
-        .map((post, index) => {
-          const category = getProjectCategory(post.metadata.title)
+        .map((post) => {
           return (
             <Link
               key={post.slug}
@@ -80,14 +62,14 @@ export function ProjectPosts() {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${category.color}`}>
-                      {category.name}
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${tagStyle}`}>
+                      {post.metadata.tag}
                     </span>
                     <span className="text-sm text-neutral-500 dark:text-neutral-400 tabular-nums">
                       {formatDate(post.metadata.publishedAt, false)}
                     </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 mb-2">
+                  <h3 className="project-name text-xl font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 mb-2">
                     {post.metadata.title}
                   </h3>
                   <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
