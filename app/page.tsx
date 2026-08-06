@@ -53,16 +53,16 @@ export default function Page() {
           <div className="flex-1">
             <h3 className="text-2xl font-semibold mb-8 text-neutral-900 dark:text-neutral-100">Work Experience</h3>
 
-            {/* Novable — Contract */}
+            {/* Novable — Part-time Developer */}
             <div className="space-y-6">
               <div>
-                <h4 className="text-xl font-semibold mb-2 text-neutral-900 dark:text-neutral-100">Frontend Developer (Contract) — Novable</h4>
+                <h4 className="text-xl font-semibold mb-2 text-neutral-900 dark:text-neutral-100">Frontend Developer (Part-time) — Novable</h4>
                 <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-4">May 2026 – Present • Brussels, Belgium</p>
 
                 <div className="grid md:grid-cols-3 gap-4 mb-6 p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
                   <div>
                     <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400">Role</span>
-                    <p className="text-sm text-neutral-900 dark:text-neutral-100">Frontend Developer (Contract)</p>
+                    <p className="text-sm text-neutral-900 dark:text-neutral-100">Frontend Developer (Part-time)</p>
                   </div>
                   <div>
                     <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400">Company</span>
