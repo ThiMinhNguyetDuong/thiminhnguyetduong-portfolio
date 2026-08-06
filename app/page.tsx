@@ -22,7 +22,7 @@ export default function Page() {
 
             <div className="space-y-6 text-neutral-600 dark:text-neutral-300 leading-relaxed max-w-4xl">
               <p className="text-lg">
-                Hi, I’m Thi — a Computer Science graduate and Software Developer based in Brussels. I specialise in building production-ready web applications with React, Next.js, and TypeScript, while expanding my expertise across full-stack development, cloud-native architecture, and data-driven user experiences.
+                Hi, I’m Thi — a Computer Science graduate and Software Developer based in Belgium. I specialise in building production-ready web applications with React, Next.js, and TypeScript, while expanding my expertise across full-stack development, cloud-native architecture, and data-driven user experiences.
               </p>
 
               <p className="text-lg">
